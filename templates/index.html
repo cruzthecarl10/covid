@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Analytics page {% endblock title %}
+
+
+{% block script %}
+<script>
+// Total Cases Line Graph
+
+$(document).ready(function(){
+  var ctx = document.getElementById('totalLineChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ total_dates|safe }},
+        datasets: [{
+            label: 'Total Cases Per Day',
+            data: {{ total_qty|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+    
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        rresponsive: true,
+        pieceLabel: {
+          render: 'percentage',
+        },
+
+    }
+
+
+});
+});
+
+
+// total cases death
+$(document).ready(function(){
+  var ctx = document.getElementById('DeathLineChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ total_deaths_dates|safe }},
+        datasets: [{
+            label: 'Total Deaths Per Day',
+            data: {{ total_deaths_qty|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+    
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        pieceLabel: {
+          render: 'percentage',
+        },
+
+    }
+
+
+});
+});
+
+
+// recovered cases
+$(document).ready(function(){
+  var ctx = document.getElementById('RecoveredLineChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ total_recovered_dates|safe }},
+        datasets: [{
+            label: 'Total Recoveries Per Day',
+            data: {{ total_recovered_qty|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+    
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        pieceLabel: {
+          render: 'percentage',
+        },
+
+    }
+
+
+});
+});
+
+
+// per place cases
+$(document).ready(function(){
+  var ctx = document.getElementById('perPlaceBar').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ count|safe }},
+        datasets: [{
+            label: 'Total Per Province',
+            data: {{ place|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+
+    
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        pieceLabel: {
+          render: 'percentage',
+        },
+
+    }
+
+
+
+
+});
+});
+
+
+// per age cases
+$(document).ready(function(){
+  var ctx = document.getElementById('perAgeDoughnut').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ per_age|safe }},
+        datasets: [{
+            label: 'Total per Age Group',
+            data: {{ per_age_count|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+
+    
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        pieceLabel: {
+          render: 'value',
+        },
+
+    }
+
+
+});
+});
+
+
+
+// per gender cases
+$(document).ready(function(){
+  var ctx = document.getElementById('perGenderPie').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ per_gender|safe }},
+        datasets: [{
+            label: 'Pie chart per Gender',
+            data: {{ per_gender_count|safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+
+    
+            ],
+            borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        pieceLabel: {
+          render: 'value',
+        },
+
+    }
+
+
+});
+});
+
+
+// worldwide vs ph
+$(document).ready(function(){
+  var ctx = document.getElementById('worldVsPhLine').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ total_dates|safe }},
+        datasets: [{
+            label: 'Worldwide',
+            data: {{ total_qty_world|safe }}
+        }, {
+            label: 'PH',
+            data: {{total_qty|safe}},
+
+
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+
+    
+            ],
+            borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true, // set to false if want to resize
+        pieceLabel: {
+          render: 'value',
+        },
+
+    }
+
+
+});
+}); // ignore errors javascript linting
+
+
+</script>
+{% endblock script %}
+
+
+{% block content %}
+
+
+<h1>Covid Analytics Dashboard</h1>
+{% if user.is_authenticated %}
+<p>Hi {{ user.username }}
+<p><a href="{% url 'logout' %}">Log out</a></p>
+
+<div class="worldwide-vs-ph">
+    <h4>Total Cases Worldwide Vs. PH</h4>
+        <canvas id="worldVsPhLine" width="350" height="350"></canvas>
+
+</div>
+
+
+<div class="total-cases">
+    <h4>Total Cases</h4>
+    <canvas id="totalLineChart" width="350" height="350"></canvas>
+</div>
+
+<div class="death-cases">
+    <h4>Death Cases</h4>
+    <canvas id="DeathLineChart" width="350" height="350"></canvas>
+
+</div>
+
+
+<div class="recovered-cases">
+    <h4>Recovery Cases</h4>
+    <canvas id="RecoveredLineChart" width="350" height="350"></canvas>
+
+</div>
+
+<div class="per-place">
+    <h4>Per Age</h4>
+    <canvas id="perPlaceBar" width="750" height="750"></canvas>
+
+</div>
+
+<div class="per-age">
+    <h4>Per Age Group</h4>
+    <canvas id="perAgeDoughnut" width="350" height="350"></canvas>
+
+</div>
+
+
+<div class="per-gender">
+    <h4>Per Gender</h4>
+        <canvas id="perGenderPie" width="350" height="350"></canvas>
+
+    
+</div>
+
+
+
+{% else %}
+<p><a href="{% url 'signup' %}">Sign Up</a></p>
+<p><a href="{% url 'login' %}">Log In </a></p>
+{% endif %}
+
+
+
+
+{% endblock content %}
