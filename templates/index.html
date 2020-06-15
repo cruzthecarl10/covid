@@ -307,13 +307,13 @@ $(document).ready(function(){
 
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
+                // 'rgba(54, 162, 235, 0.2)',
 
     
             ],
             borderColor: [
                      'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
+                // 'rgba(54, 162, 235, 1)',
 
 
             ],
@@ -323,11 +323,10 @@ $(document).ready(function(){
     options: {
         scales: {
             
-            xAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+            y : {
+            suggestedMin: -1,
+            suggestedMax: 90000,
+        }
         },
         responsive: true, // set to false if want to resize
         pieceLabel: {

@@ -6,7 +6,7 @@ from django.db.models import Count, Case, When
 
 
 
-@login_required
+# @login_required
 def home(request):
     template_name = 'index.html'
 
